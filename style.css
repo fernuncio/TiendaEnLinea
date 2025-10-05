@@ -21,11 +21,18 @@ html{
     margin: 0 auto;
 }
 
+.heading-1{
+    text-align: center;
+    font-weight: 500;
+    font-size: 3rem;
+}
+
 /*logo de la bandera*/
 .logo {
     width: 50px;
     height: auto;
 }
+
 
 .logo-user{
     width: 20px;
@@ -34,6 +41,11 @@ html{
 
 .logo-feature{
     width: 35px;
+    height: auto;
+}
+
+.logo-elements{
+    width: 15px;
     height: auto;
 }
 
@@ -64,11 +76,12 @@ html{
     display: flex;
     align-items: center;
     gap: .5rem;
+    white-space: nowrap;
 }
 
 .container-logo h1 a{
-    text-decoration: h1;
-    color: #000000;
+    text-decoration: none;
+    color: white;
     font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -78,6 +91,9 @@ html{
     display: flex;
     gap: 1rem;
     cursor: pointer;
+}
+.container-user .text{
+    font-size: 1.6rem;
 }
 
 .container-navbar{
@@ -205,4 +221,226 @@ html{
     padding: 1rem 3rem;
     text-transform: uppercase;
     border-radius: 3rem;
+}
+
+/*main content*/
+.main-content{
+    background-color: white;
+}
+
+/*features*/
+
+.container-features{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 3rem;
+    padding: 3rem 0;
+}
+
+.card-feature{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5 rem;
+    background-color: rgb(192, 140, 140);
+    border-radius: 1rem;
+    padding: 1.5rem 0;
+}
+
+.feature-content{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.feature-content span{
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--dark-color);
+}
+
+.feature-content p{
+    color: darkred;
+    font-weight: 500;
+}
+
+/*colecciones*/
+.top-collections{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.container-collections{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 3rem;
+}
+
+.card-collections{
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    gap: 2rem;
+}
+
+.collections-f1{
+    background-image: linear-gradient(#00000080,#00000080),url(img/c2.jpg);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.collections-team{
+    background-image: linear-gradient(#00000080,#00000080),url(img/c3.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.collections-helmets{
+    background-image: linear-gradient(#00000080,#00000080),url(img/c1.jpg);
+    background-size: cover;
+    background-position:center;
+    background-repeat: no-repeat;
+}
+
+.card-collections p{
+    font-size: 2.5rem;
+    color: white;
+    text-transform: capitalize;
+    position: relative;
+    text-align: center;
+}
+
+.card-collections p::after{
+    content: '';
+    width: 2.5rem;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translate(-50%,50%);
+}
+
+.card-collections span{
+    font-size: 1.6rem;
+    color: white;
+    cursor: pointer;
+}
+
+.card-collections span:hover{
+    color: var(--primary-color);
+}
+
+/*Lanzamientos*/
+.latest-releases{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.latest{
+    width: 200px;
+    height: auto;
+}
+
+.container {
+    display: flex;
+}
+
+.container-products{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
+    gap: 3rem;
+}
+
+.card-product{
+    background-color: lightgray;
+    padding: 2rem 3rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    box-shadow: 0 0 .2rem rgba(0, 0, 0, 0.1);
+}
+
+.container-img{
+    position: relative;
+}
+
+.button-group{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 0;
+    right: -3rem;
+    z-index: -1;
+}
+.content-card-product{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4,min-content);
+    row-gap: 1rem;
+    transition: all .4s ease;
+}
+
+.button-group span{
+    border: 1px solid darkgray;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .6s ease;
+}
+
+.button-group span:hover{
+    background-color: var(--primary-color);
+}
+
+.card-product:hover .button-group{
+    z-index: 0;
+    right: -1rem;
+}
+.content-card-product h3{
+    grid-row: 2/3;
+    grid-column: 1/-1;
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.content-card-product h3:hover{
+    color: var(--primary-color);
+}
+
+.add-cart{
+    justify-self: start;
+    border: 2px solid darkgray;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-cart:hover{
+    background-color: darkgray;
+}
+
+.content-card-product .price{
+    justify-self: end;
+    align-self:center ;
+    font-size: 1.7rem;
+    font-weight: 600;
 }
