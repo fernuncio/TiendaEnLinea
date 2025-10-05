@@ -595,3 +595,118 @@ html{
 	font-weight: 400;
 	font-size: 1.6rem;
 }
+
+/* Formulario */
+
+.formulario {
+    background-color:#241E1E;
+    width: min(40rem,100%); /* Utiliza el valor mas pequeño */
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border:none;
+}
+.contenedor-formulario {
+    position: relative;
+    width: min(40rem, 100%);
+    margin: 80px auto 0 auto; /* Margen superior para dar espacio al botón */
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+.campo label {
+    color:#fff;
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+    color:#fff
+}
+
+.text-muted-foreground {
+    color: #fff;
+}
+.text-muted-foreground a {
+    color: #DC143C;
+    text-decoration: none; 
+    font-weight: bold;
+}
+
+.text-muted-foreground a:hover {
+    color: #ff0000;
+    text-decoration: underline; 
+}
+
+.body-formulario {
+   
+   background: linear-gradient(135deg, #1a1a1a 0%, #8B0000 50%, #000000 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.btn-volver {
+    position: absolute; 
+    top: -40px;
+    left: 0;
+    background-color: #DC143C;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px; 
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+}
+
+.btn-volver:hover {
+    background-color: #ff0000;
+    transform: scale(1.05);
+}
+
+
+.contenedor-boton {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.btn-crearCuenta {
+    background-color: #DC143C;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.btn-crearCuenta:hover {
+    background-color: #ff0000;
+    transform: scale(1.05);
+}
