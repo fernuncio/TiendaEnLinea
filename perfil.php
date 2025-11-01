@@ -48,7 +48,7 @@
                     <li class="dropdown"><a href="#">Comprar por Equipo</a>
                         <ul class="dropdown-content">
                             <li><a href="#">Mercedes</a></li>
-                            <li><a href="FerrariTeam.html">Ferrari</a></li>
+                            <li><a href="FerrariTeam.php">Ferrari</a></li>
                             <li><a href="#">Hass</a></li>
                             <li><a href="#">Kick Sauber</a></li>
                             <li><a href="#">Williams</a></li>

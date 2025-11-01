@@ -6,6 +6,8 @@
                           productos WHERE activo=1");
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    session_start();
+    $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true;
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +36,18 @@
                     </div>
 
                     <div class="container-user">
-                        <a href="iniciarSesion.php">
-                            <img src="img/user.png" class="logo-user" alt="Logo User">
-                        </a>
+                        <?php if($usuario_logueado): ?>
+                            <a href="perfil.php" title="Mi Perfil">
+                                <img src="img/user.png" class="logo-user" alt="Logo User">
+                            </a>
+                            <span class="text" style="margin-left: 5px; color: #666;">
+                                Hola, <?php echo htmlspecialchars($_SESSION["nombre"]); ?>
+                            </span>
+                        <?php else: ?>
+                            <a href="iniciarSesion.php" title="Iniciar Sesión">
+                                <img src="img/user.png" class="logo-user" alt="Logo User">
+                            </a>
+                        <?php endif; ?>
                         <img src="img/bag.png" class="logo-user" alt="Logo Cart">
                         <div class="content-shopping-cart">
                             <span class="text">Carrito de Compras</span>
@@ -54,14 +65,14 @@
                         <li class="dropdown"><a href="#">Comprar por Equipo</a>
                              <ul class="dropdown-content">
                                 <li><a href="#">Mercedes</a></li>
-                                <li><a href="FerrariTeam.html">Ferrari</a></li>
+                                <li><a href="FerrariTeam.php">Ferrari</a></li>
                                 <li><a href="#">Hass</a></li>
                                 <li><a href="#">Kick Sauber</a></li>
                                 <li><a href="#">Williams</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Coleccionables</a></li>
-                        <li><a href="#">Ofertas</a></li>
+                        <li><a href="#">Oferta</a></li>
                         <li><a href="#">Contacto</a></li>
                         <li><a href="iniciarSesion.php">Mi Cuenta</a></li>
                     </ul>

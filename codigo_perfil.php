@@ -47,13 +47,13 @@ $inicial = strtoupper(substr($_SESSION["nombre"], 0, 1));
 
 // ✅ Determinar membresía
 if ($total_gastado >= 5000) {
-    $membresia = "Platinum";
+    $membresia = "Platino";
 } elseif ($total_gastado >= 2000) {
-    $membresia = "Gold";
+    $membresia = "Oro";
 } elseif ($total_gastado >= 500) {
-    $membresia = "Silver";
+    $membresia = "Plata";
 } else {
-    $membresia = "Bronze";
+    $membresia = "Bronce";
 }
 
 // ✅ Calcular puntos F1
