@@ -28,7 +28,7 @@
     
     <section>
          <div class="contenedor-formulario">
-             <a href="index.phps" class="btn-volver">Volver</a>
+             <a href="index.php" class="btn-volver">Volver</a>
             <form class="formulario" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <fieldset>
                 <legend>Inicia Sesión</legend>

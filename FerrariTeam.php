@@ -1,3 +1,13 @@
+<?php
+    require 'Configuracion/database.php';
+    $db = new Database();
+    $con = $db->conectar();
+    $sql = $con->prepare("SELECT id_producto,nombre,precio,URLimg FROM 
+                          productos WHERE activo=1");
+    $sql->execute();
+    $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +34,7 @@
                     </div>
 
                     <div class="container-user">
-                        <a href="iniciarSesion.html">
+                        <a href="iniciarSesion.php">
                             <img src="img/user.png" class="logo-user" alt="Logo User">
                         </a>
                         <img src="img/bag.png" class="logo-user" alt="Logo Cart">
@@ -53,7 +63,7 @@
                         <li><a href="#">Coleccionables</a></li>
                         <li><a href="#">Ofertas</a></li>
                         <li><a href="#">Contacto</a></li>
-                        <li><a href="iniciarSesion.html">Mi Cuenta</a></li>
+                        <li><a href="iniciarSesion.php">Mi Cuenta</a></li>
                     </ul>
                     <form class="search-form">
                         <input type="search" placeholder="Buscar..."/>
@@ -78,87 +88,21 @@
             <section class="product-grid-area">
                 <p style="font-size: 12px; margin-bottom: 10px;">Elementos 9</p>
                 <div class="product-grid">
-                
+                    <?php
+                        foreach($resultado as $row){
+                            $imagen = $row['URLimg'];
+                    ?>
                     <article class="product-card">
-                    <div class="product-image product-image1"></div>
-                    <div class="product-name">Polo del Equipo Scuderia Ferrari 2025</div>
-                    <div class="product-price">97,00 US$</div>
+                    <div class="product-image product-<?php echo $imagen?>"></div>
+                    <div class="product-name"><?php echo $row['nombre']?></div>
+                    <div class="product-price"><?php echo $row['precio']?> US$</div>
                     <span class="add-cart">
                         <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
                     </span>
                     </article>
 
-                    <article class="product-card">
-                    <div class="product-image product-image2"></div>
-                    <div class="product-name">Camiseta del Equipo Scuderia Ferrari 2025</div>
-                    <div class="product-price">80,50 US$</div>
-                    <span class="add-cart">
-                        <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                    </span>
-                    </article>
-                
-                    <article class="product-card">
-                    <div class="product-image product-image3"></div>
-                    <div class="product-name">Chaqueta de edición especial del equipo Scuderia Ferrari 2025 Monza</div>
-                    <div class="product-price">324,00 US$</div>
-                    <span class="add-cart">
-                        <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                    </span>
-                    </article>
-
-                    <article class="product-card">
-                    <div class="product-image product-image4"></div>
-                    <div class="product-name">Pantalones Scuderia Ferrari Race Premium de Puma</div>
-                    <div class="product-price">79,00 US$</div>
-                    <span class="add-cart">
-                        <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                    </span>
-                    </article>
-
-                    <article class="product-card">
-                    <div class="product-image product-image5"></div>
-                    <div class="product-name">Gorra Scuderia Ferrari 2025 Equipo Lewis Hamilton - Blanco</div>
-                    <div class="product-price">38,50 US$</div>
-                    <span class="add-cart">
-                        <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                    </span>
-                    </article>
-                
-                    <article class="product-card">
-                    <div class="product-image product-image6"></div>
-                    <div class="product-name">Gorra de edición especial del equipo Scuderia Ferrari 2025 Monza</div>
-                    <div class="product-price">59,00 US$</div>
-                    <span class="add-cart">
-                        <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                    </span>
-                    </article>
-
-                    <article class="product-card">
-                    <div class="product-image product-image7"></div>
-                    <div class="product-name">Chaqueta Scuderia Ferrari Race Premium - Negro</div>
-                    <div class="product-price">143,00 US$</div>
-                    <span class="add-cart">
-                        <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                    </span>
-                    </article>
-
-                    <article class="product-card">
-                    <div class="product-image product-image8"></div>
-                    <div class="product-name">Casco Scuderia Ferrari Lewis Hamilton Miami GP 2025 1:5</div>
-                    <div class="product-price">78,00 US$</div>
-                    <span class="add-cart">
-                        <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                    </span>
-                    </article>
-                
-                    <article class="product-card">
-                        <div class="product-image product-image9"></div>
-                        <div class="product-name">Camiseta extragrande de pilotos Scuderia Ferrari 2025 - Blanco</div>
-                        <div class="product-price">102,50 US$</div>
-                        <span class="add-cart">
-                            <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                        </span>
-                    </article>
+                    <?php } ?>
+                    
                 </div>
                 <section class="banner-last">
                     <div class="content-banner-last">
@@ -189,7 +133,7 @@
                     <div class="information">
                         <p class="title-footer">Información</p>
                         <ul>
-                            <li><a href="iniciarSesion.html">Mi Cuenta</a></li>
+                            <li><a href="iniciarSesion.php">Mi Cuenta</a></li>
 							<li><a href="SobreNosotros.html">Sobre Nosotros</a></li>
                         </ul>
                     </div>

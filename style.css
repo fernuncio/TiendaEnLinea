@@ -1833,3 +1833,201 @@ textarea.input-modal {
 
     
 }
+
+/*nuevo*/
+
+/* --- Contenido Principal del Producto --- */
+.container-product {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.product-detail {
+    padding: 30px 0;
+    background-color: rgb(243, 242, 242);
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    text-transform: uppercase;
+}
+
+/* Diseño de dos columnas */
+.product-layout {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.product-image {
+    flex: 1;
+    max-width: 50%;
+    background-color: var(--light-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-product-img {
+    width: 70%;
+    height: auto;
+    display: block;
+}
+
+.product-info {
+    flex: 1;
+    max-width: 50%;
+    padding-top: 20px;
+}
+
+.product-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.size-guide-link {
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 15px;
+    color: #585858;
+}
+
+.size-selector-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.size-selector-group label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.size-select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    width: 250px;
+    appearance: none; /* Oculta la flecha nativa */
+    /*background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="292.4" height="292.4" viewBox="0 0 292.4 292.4"><path fill="%23333" d="M287.9 66.9c-2.4-2.4-5.6-3.8-9.1-3.8s-6.7 1.4-9.1 3.8L146.2 191.1 22.7 66.9c-2.4-2.4-5.6-3.8-9.1-3.8s-6.7 1.4-9.1 3.8c-4.8 4.8-4.8 12.5 0 17.3l132.3 132.3c2.4 2.4 5.6 3.8 9.1 3.8s6.7-1.4 9.1-3.8l132.3-132.3c4.8-4.8 4.8-12.5 0-17.3z"/></svg>') no-repeat right 10px center;
+    background-size: 12px;*/
+    cursor: pointer;
+}
+
+.add-to-cart-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.quantity-control {
+    display: flex;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.qty-btn {
+    background: var(--light-gray);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.qty-input {
+    width: 50px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    font-size: 16px;
+    outline:none;
+}
+
+.add-to-cart-btn {
+    background-color: #6c757d; 
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    flex-grow: 0;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #5a6268;
+}
+
+/* --- Sección de Descripción --- */
+
+/* --- Sección de Descripción --- */
+.product-description-section {
+    /* Implementa la línea negra usando un borde superior */
+    border-top: 2px solid var(--dark-line); 
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 40px;
+}
+
+.description-header {
+    /* Fondo más oscuro (gris claro) como se solicita */
+    background-color: var(--light-gray-bg); 
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color); /* Separación visual del contenido */
+}
+
+.description-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.description-header i {
+    margin-right: 10px;
+    color: var(--text-color);
+}
+
+.description-content {
+    padding: 20px;
+    font-size: 15px;
+}
+
+.description-content p {
+    margin-bottom: 15px;
+    color: rgb(100, 98, 98);
+}
+
+.description-content ul {
+    /* Permite las viñetas nativas */
+    list-style: disc; 
+    padding-left: 20px; /* Espacio para que se vean las viñetas */
+}
+
+.description-content li {
+    margin-bottom: 8px;
+    /* Ajusta la alineación si usas viñetas nativas */
+    /* Remueve cualquier estilo de viñeta manual que hayas agregado (como usar el fa-circle) */
+}
