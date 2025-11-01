@@ -86,7 +86,7 @@
        //COMPROBANDO LOS ERRORES DE ENTRADA ANTES DE INSERTAR LOS DATOS EN LA BASE DE DATOS
        if(empty($username_error) && empty($email_error) && empty($password_err) && empty($confi_password_err)){
 
-        $sql = "INSERT INTO usuarios (nombre, email, contraseña, rol) VALUES (?, ?, ?, 'cliente')"; // ✅ Corregido usuario → nombre y 'cliente )
+        $sql = "INSERT INTO usuarios (nombre, email, contrasena, rol) VALUES (?, ?, ?, 'cliente')"; // ✅ Corregido usuario → nombre y 'cliente )
 
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "sss", $param_user, $param_email, $param_password); // ✅ Corregido msqly → mysqli
@@ -97,7 +97,7 @@
             $param_password = password_hash($password, PASSWORD_DEFAULT); //ENCRIPTANDO CONTRASEÑA
 
             if(mysqli_stmt_execute($stmt)){
-                header("location: iniciarSesion.html");
+                header("location: iniciarSesion.php");
                 exit(); 
             }else{
                 echo "Algo Salio mal, intentalo más tarde";

@@ -1,3 +1,8 @@
+<?php
+
+    require "codigo_iniciarSesion.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +29,7 @@
     <section>
          <div class="contenedor-formulario">
              <a href="index.html" class="btn-volver">Volver</a>
-            <form class="formulario">
+            <form class="formulario" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> " method="post">
             <fieldset>
                 <legend>Inicia Sesión</legend>
                 <p class="text-muted-foreground" style="text-align: center;">Inicia sesión para acceder a tu cuenta y continuar tu experiencia de carreras</p>
@@ -33,18 +38,19 @@
                 <div class="campo">
                     
                     <label>Email</label>
-                    <input class="input-text" type="email" placeholder="user@email.com">
-                    <span class="msg-error"></span>
+                    <input class="input-text" type="email" placeholder="user@email.com" name="email">
+                    <span class="msg-error" style="color: red; display: block;"><?php echo $email_error; ?></span>
                     <br><br>
                     <label>Contraseña</label>
-                    <input class="input-text" type="password" placeholder="******">
-                    <span class="msg-error"></span>
+                    <input class="input-text" type="password" placeholder="******" name="password">
+                    <span class="msg-error" style="color: red; display: block;"><?php echo $password_error; ?></span>
                     
                     <br><br>
                     
                     
                     <div class="contenedor-boton">
-                        <a href="index.html" class="btn-crearCuenta">Iniciar Sesión</a>
+                        <input type="submit" class="btn-crearCuenta" value="Iniciar Sesión">
+
                     </div>
                     
                    

@@ -62,7 +62,7 @@
                     
                     <!-- Párrafo de iniciar sesión -->
                     <p class="text-muted-foreground" style="text-align: center;">
-                        ¿Ya tienes cuenta? <a href="iniciarSesion.html">Iniciar Sesión</a>
+                        ¿Ya tienes cuenta? <a href="iniciarSesion.php">Iniciar Sesión</a>
                     </p>
                 </div>
              </fieldset>
