@@ -7,7 +7,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
-require_once "Database.php";
+require_once "Configuracion/database.php";
 $db = new Database();
 $pdo = $db->conectar();
 
