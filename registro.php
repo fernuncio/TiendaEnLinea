@@ -1,3 +1,9 @@
+<?php
+
+    include 'codigo_registro.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,11 +25,11 @@
 
     </header>
     
-    
     <section>
          <div class="contenedor-formulario">
              <a href="index.html" class="btn-volver">Volver</a>
-            <form class="formulario">
+             
+            <form class="formulario" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> " method="post">
             <fieldset>
                 <legend>ÚNETE A Formula 1 Store</legend>
                 <p class="text-muted-foreground" style="text-align: center;">Crea tu cuenta y accede a beneficios exclusivos</p>
@@ -31,21 +37,27 @@
                 <br>
                 <div class="campo">
                     <label>Nombre </label>
-                    <input class="input-text" type="text" placeholder="Nombre">
-                    <br><br>
+                    <input class="input-text" type="text" placeholder="Nombre" name="user" >
+                    
+                     <span class="msg-error" style="color: red; display: block;"><?php echo $username_error; ?></span>
+                    <br>
+                    
                     <label>Email</label>
-                    <input class="input-text" type="email" placeholder="user@email.com">
+                    <input class="input-text" type="email" placeholder="user@email.com" name="email">
+                    <span class="msg-error" style="color: red; display: block;"><?php echo $email_error; ?></span>
                     <br><br>
                     <label>Contraseña</label>
-                    <input class="input-text" type="password" placeholder="******">
+                    <input class="input-text" type="password" placeholder="******" name="password">
+                    <span class="msg-error" style="color: red; display: block;"><?php echo $password_err; ?></span>
                     <br><br>
                     <label>Confirmar contraseña</label>
-                    <input class="input-text" type="password" placeholder="******">
+                    <input class="input-text" type="password" placeholder="******" name="confi_password">
+                    <span class="msg-error" style="color: red; display: block;"><?php echo $confi_password_err; ?></span>
                     <br><br>
                     
                     <!-- Botón Crear Cuenta -->
-                    <div class="contenedor-boton">
-                        <a href="index.html" class="btn-crearCuenta">Crear Cuenta</a>
+                     <div class="contenedor-boton">
+                        <input type="submit" class="btn-crearCuenta" value="Crear Cuenta">
                     </div>
                     
                     <!-- Párrafo de iniciar sesión -->

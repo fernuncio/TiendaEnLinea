@@ -931,6 +931,17 @@ p {
     background-color: #ff0000;
     transform: scale(1.05);
 }
+/*---------------------------------*/
+/*        TEXTO DE ERROR           */
+/*---------------------------------*/
+
+    .msg.error{
+        color:red;
+        display: block;
+        margin-top: 10px;
+    }
+
+
 
 /*---------------------------------*/
 /*            REPONSIVO            */
