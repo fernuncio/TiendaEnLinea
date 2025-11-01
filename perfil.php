@@ -105,6 +105,14 @@
                         <div class="stat-number">$<?php echo number_format($total_gastado, 2); ?></div>
                         <div class="stat-label">Total Gastado</div>
                     </div>
+                    <div class="stat-item">
+                        <div class="stat-number"><?php echo $puntos_f1; ?></div>
+                        <div class="stat-label">Puntos F1</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number"><?php echo $membresia; ?></div>
+                        <div class="stat-label">Membresía</div>
+                    </div>
                 </div>
             </div>
 

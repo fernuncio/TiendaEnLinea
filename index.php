@@ -66,7 +66,7 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
                         <li><a href="#">Coleccionables</a></li>
                         <li><a href="#">Ofertas</a></li>
                         <li><a href="#">Contacto</a></li>
-                        <li><a href="iniciarSesion.html">Mi Cuenta</a></li>
+                        <li><a href="iniciarSesion.php">Mi Cuenta</a></li>
                     </ul>
                     <form class="search-form">
                         <input type="search" placeholder="Buscar..."/>
@@ -269,7 +269,7 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
                     <div class="information">
                         <p class="title-footer">Información</p>
                         <ul>
-                            <li><a href="iniciarSesion.html">Mi Cuenta</a></li>
+                            <li><a href="perfil.php">Mi Cuenta</a></li>
 							<li><a href="SobreNosotros.html">Sobre Nosotros</a></li>
                         </ul>
                     </div>

@@ -29,7 +29,7 @@
          <div class="contenedor-formulario">
              <a href="index.php" class="btn-volver">Volver</a>
              
-            <form class="formulario" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> " method="post">
+            <form class="formulario" action= "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> " method="post">
             <fieldset>
                 <legend>ÚNETE A Formula 1 Store</legend>
                 <p class="text-muted-foreground" style="text-align: center;">Crea tu cuenta y accede a beneficios exclusivos</p>
