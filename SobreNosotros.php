@@ -68,7 +68,7 @@
                         <li><a href="#">Coleccionables</a></li>
                         <li><a href="#">Ofertas</a></li>
                         <li><a href="#">Contacto</a></li>
-                        <li><a href="#">Mi Cuenta</a></li>
+                        <li><a href="perfil.php">Mi Cuenta</a></li>
                     </ul>
                     <form class="search-form">
                         <input type="search" placeholder="Buscar..."/>
