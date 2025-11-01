@@ -26,7 +26,7 @@
                     <div class="customer-support">
                          <img src="img/suport.png" class="logo-user" alt="Logo Soporte">
                         <div class="content-customer-support">
-                            <span class="text">Soporte al clinte</span>
+                            <span class="text">Soporte al cliente</span>
                             <span class="number">123-456</span>
                         </div>
                     </div>
