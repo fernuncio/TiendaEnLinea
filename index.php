@@ -1,3 +1,7 @@
+<?php
+session_start();
+$usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,13 +24,22 @@
                     </div>
                     <div class="container-logo">
                         <img src="img/flagle.png" class="logo" alt="Logo Tienda F1">
-                        <h1 class="logo"><a>Formula 11 Store</a></h1>
+                        <h1 class="logo"><a>Formula 1 Store</a></h1>
                     </div>
 
                     <div class="container-user">
-                        <a href="iniciarSesion.php">
-                            <img src="img/user.png" class="logo-user" alt="Logo User">
-                        </a>
+                        <?php if($usuario_logueado): ?>
+                            <a href="perfil.php" title="Mi Perfil">
+                                <img src="img/user.png" class="logo-user" alt="Logo User">
+                            </a>
+                            <span class="text" style="margin-left: 5px; color: #666;">
+                                Hola, <?php echo htmlspecialchars($_SESSION["nombre"]); ?>
+                            </span>
+                        <?php else: ?>
+                            <a href="iniciarSesion.php" title="Iniciar Sesión">
+                                <img src="img/user.png" class="logo-user" alt="Logo User">
+                            </a>
+                        <?php endif; ?>
                         <img src="img/bag.png" class="logo-user" alt="Logo Cart">
                         <div class="content-shopping-cart">
                             <span class="text">Carrito de Compras</span>

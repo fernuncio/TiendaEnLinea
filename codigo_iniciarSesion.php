@@ -4,7 +4,7 @@
     session_start();
 
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true){
-        header("location: index.html");
+        header("location: index.php");
         exit;
     }
 
@@ -62,7 +62,7 @@
                                 if($rol == "admin"){
                                     header("location: admin/dashboard.php");
                                 } else {
-                                    header("location: index.html");
+                                    header("location: index.php");
                                 }
                                 exit(); 
                             }else{
@@ -76,7 +76,9 @@
                     echo "UPS! algo salió mal, inténtalo más tarde";
                 }
             }
+         if(isset($stmt) && $stmt !== false){
         mysqli_stmt_close($stmt);
+        }
     }
 
 ?>

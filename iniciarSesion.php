@@ -28,8 +28,8 @@
     
     <section>
          <div class="contenedor-formulario">
-             <a href="index.html" class="btn-volver">Volver</a>
-            <form class="formulario" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> " method="post">
+             <a href="index.phps" class="btn-volver">Volver</a>
+            <form class="formulario" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <fieldset>
                 <legend>Inicia Sesión</legend>
                 <p class="text-muted-foreground" style="text-align: center;">Inicia sesión para acceder a tu cuenta y continuar tu experiencia de carreras</p>
