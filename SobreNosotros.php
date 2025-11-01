@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true;
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,9 +30,18 @@
                     </div>
 
                     <div class="container-user">
-                        <a href="iniciarSesion.php">
-                            <img src="img/user.png" class="logo-user" alt="Logo User">
-                        </a>
+                        <?php if($usuario_logueado): ?>
+                            <a href="perfil.php" title="Mi Perfil">
+                                <img src="img/user.png" class="logo-user" alt="Logo User">
+                            </a>
+                            <span class="text" style="margin-left: 5px; color: #666;">
+                                Hola, <?php echo htmlspecialchars($_SESSION["nombre"]); ?>
+                            </span>
+                        <?php else: ?>
+                            <a href="iniciarSesion.php" title="Iniciar Sesión">
+                                <img src="img/user.png" class="logo-user" alt="Logo User">
+                            </a>
+                        <?php endif; ?>
                         <img src="img/bag.png" class="logo-user" alt="Logo Cart">
                         <div class="content-shopping-cart">
                             <span class="text">Carrito de Compras</span>
@@ -53,7 +68,7 @@
                         <li><a href="#">Coleccionables</a></li>
                         <li><a href="#">Ofertas</a></li>
                         <li><a href="#">Contacto</a></li>
-                        <li><a href="#">Mi Cuenta</a></li>
+                        <li><a href="perfil.php">Mi Cuenta</a></li>
                     </ul>
                     <form class="search-form">
                         <input type="search" placeholder="Buscar..."/>
@@ -109,8 +124,8 @@
                     <div class="information">
                         <p class="title-footer">Información</p>
                         <ul>
-                            <li><a href="iniciarSesion.php">Mi Cuenta</a></li>
-							<li><a href="SobreNosotros.html">Sobre Nosotros</a></li>
+                            <li><a href="perfil.php">Mi Cuenta</a></li>
+							<li><a href="SobreNosotros.php">Sobre Nosotros</a></li>
                         </ul>
                     </div>
                     <div class="customer-service">

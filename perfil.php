@@ -181,7 +181,7 @@
                     <p class="title-footer">Información</p>
                     <ul>
                         <li><a href="perfil.php">Mi Cuenta</a></li>
-                        <li><a href="SobreNosotros.html">Sobre Nosotros</a></li>
+                        <li><a href="SobreNosotros.php">Sobre Nosotros</a></li>
                     </ul>
                 </div>
                 <div class="customer-service">
