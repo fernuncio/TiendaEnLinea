@@ -26,7 +26,7 @@
                     <div class="customer-support">
                          <img src="img/suport.png" class="logo-user" alt="Logo Soporte">
                         <div class="content-customer-support">
-                            <span class="text">Soporte al clinte</span>
+                            <span class="text">Soporte al cliente</span>
                             <span class="number">123-456</span>
                         </div>
                     </div>
@@ -144,8 +144,8 @@
                     <div class="information">
                         <p class="title-footer">Información</p>
                         <ul>
-                            <li><a href="iniciarSesion.php">Mi Cuenta</a></li>
-							<li><a href="SobreNosotros.html">Sobre Nosotros</a></li>
+                            <li><a href="perfil.php">Mi Cuenta</a></li>
+							<li><a href="SobreNosotros.php">Sobre Nosotros</a></li>
                         </ul>
                     </div>
                     <div class="customer-service">

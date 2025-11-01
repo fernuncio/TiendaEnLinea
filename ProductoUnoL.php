@@ -118,7 +118,7 @@
                     <div class="information">
                         <p class="title-footer">Información</p>
                         <ul>
-                            <li><a href="iniciarSesion.php">Mi Cuenta</a></li>
+                            <li><a href="perfil.php">Mi Cuenta</a></li>
 							<li><a href="SobreNosotros.php">Sobre Nosotros</a></li>
                         </ul>
                     </div>
