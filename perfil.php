@@ -1,4 +1,23 @@
-<?php require_once 'codigo_perfil.php'; ?>
+<?php require_once 'codigo_perfil.php'; 
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+    //iniciar el carrito si no existe
+    if(!isset($_SESSION['carrito'])){
+        $_SESSION['carrito'] = [];
+    }
+
+    $numeroProd = 0;
+
+    // Si el carrito no está vacío, sumamos las cantidades
+    if (!empty($_SESSION['carrito'])) {
+        foreach ($_SESSION['carrito'] as $item) {
+            // Suma la cantidad de cada ítem al contador total
+            $numeroProd += $item['cantidad'];
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,10 +50,12 @@
                     <span class="text" style="margin-left: 5px; color: #fff;">
                         Hola, <?php echo htmlspecialchars($_SESSION["nombre"]); ?>
                     </span>
-                    <img src="img/bag.png" class="logo-user" alt="Logo Cart">
+                    <a href="verCarrito.php">
+                        <img src="img/bag.png" class="logo-user" alt="Logo Cart">
+                        </a>
                     <div class="content-shopping-cart">
                         <span class="text">Carrito de Compras</span>
-                        <span class="number">(0)</span>
+                        <span class="number">(<?php echo $numeroProd; ?>)</span>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,8 @@
 <?php
-// INICIALIZAR SESION
+// iniciamos sesion
 session_start();
 
-// SI YA ESTÁ LOGEADO, REDIRIGIR
+// si esta logueado lo mandamos a inicio
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: index.php");
     exit;
@@ -24,21 +24,21 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         $email = trim($_POST["email"]);
     }
 
-    // VALIDAR CONTRASEÑA
+    // validamos contraseña
     if(empty(trim($_POST["password"]))){
         $password_error = "Por favor ingrese su contraseña";
     } else {
         $password = trim($_POST["password"]);
     }
 
-    // SI NO HAY ERRORES → CONSULTAR
+    // si no tenemos errores consultamos
     if(empty($email_error) && empty($password_error)){
 
         $sql = "SELECT id_usuario, nombre, email, contrasena, rol FROM usuarios WHERE email = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$email]);
 
-        // ¿EXISTE EL USUARIO?
+        // ver si existe nuestrousuario
         if($stmt->rowCount() == 1){
             $fila = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -48,17 +48,17 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             $hashed_password = $fila["contrasena"];
             $rol = $fila["rol"];
 
-            // VERIFICAR CONTRASEÑA
+            // verificar contraseña
             if(password_verify($password, $hashed_password)){
 
-                // ASIGNAR VARIABLES DE SESIÓN
+                // variables de inicio de sesion 
                 $_SESSION["loggedin"] = true;
                 $_SESSION["id_usuario"] = $id;
                 $_SESSION["nombre"] = $nombre;
                 $_SESSION["email"] = $email_db;
                 $_SESSION["rol"] = $rol;
 
-                // REDIRECCIÓN SEGÚN ROL
+                //lo mandamos depende de su rol
                 if($rol == "admin"){
                     header("location: admin/dashboard.php");
                 } else {

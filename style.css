@@ -1850,8 +1850,8 @@ textarea.input-modal {
 
 /* Breadcrumbs */
 .breadcrumbs {
-    font-size: 12px;
-    color: #999;
+    font-size: 18px;
+    color: #234cff;
     margin-bottom: 20px;
     padding: 0 15px;
     text-transform: uppercase;
@@ -1922,9 +1922,7 @@ textarea.input-modal {
     border: 1px solid var(--border-color);
     border-radius: 4px;
     width: 250px;
-    appearance: none; /* Oculta la flecha nativa */
-    /*background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="292.4" height="292.4" viewBox="0 0 292.4 292.4"><path fill="%23333" d="M287.9 66.9c-2.4-2.4-5.6-3.8-9.1-3.8s-6.7 1.4-9.1 3.8L146.2 191.1 22.7 66.9c-2.4-2.4-5.6-3.8-9.1-3.8s-6.7 1.4-9.1 3.8c-4.8 4.8-4.8 12.5 0 17.3l132.3 132.3c2.4 2.4 5.6 3.8 9.1 3.8s6.7-1.4 9.1-3.8l132.3-132.3c4.8-4.8 4.8-12.5 0-17.3z"/></svg>') no-repeat right 10px center;
-    background-size: 12px;*/
+    appearance: none; 
     cursor: pointer;
 }
 
@@ -1977,11 +1975,9 @@ textarea.input-modal {
     background-color: #5a6268;
 }
 
-/* --- Sección de Descripción --- */
 
 /* --- Sección de Descripción --- */
 .product-description-section {
-    /* Implementa la línea negra usando un borde superior */
     border-top: 2px solid var(--dark-line); 
     border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
@@ -1990,13 +1986,12 @@ textarea.input-modal {
 }
 
 .description-header {
-    /* Fondo más oscuro (gris claro) como se solicita */
     background-color: var(--light-gray-bg); 
     padding: 15px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--border-color); /* Separación visual del contenido */
+    border-bottom: 1px solid var(--border-color);
 }
 
 .description-header h2 {
@@ -2021,13 +2016,180 @@ textarea.input-modal {
 }
 
 .description-content ul {
-    /* Permite las viñetas nativas */
     list-style: disc; 
-    padding-left: 20px; /* Espacio para que se vean las viñetas */
+    padding-left: 20px; 
 }
 
 .description-content li {
     margin-bottom: 8px;
-    /* Ajusta la alineación si usas viñetas nativas */
-    /* Remueve cualquier estilo de viñeta manual que hayas agregado (como usar el fa-circle) */
+
+}
+
+/*contenedor de tallas*/
+/* Estilo del contenedor principal*/
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px; 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; 
+    max-width: 800px; 
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+/* Estilo para el botón de cerrar*/
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos de la tabla */
+.modal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+    display: block;
+}
+
+.modal-content th, .modal-content td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    white-space: nowrap; 
+}
+
+.modal-content th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.modal-content h2 {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.scroll-indicator {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+/*carrito*/
+.body-cart { font-family: Arial, sans-serif; padding: 20px; }
+.carrito-tabla { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-bottom: 20px; 
+    margin-left: auto; 
+    margin-right: 0;}
+.carrito-tabla th, .carrito-tabla td { 
+    border: 1px solid #ddd; 
+    padding: 8px; 
+    text-align: left; 
+    font-size: 1.4rem;
+}
+
+.carrito-tabla th { background-color: #f2f2f2; }
+.total-section { text-align: right; font-size: 1.2em; font-weight: bold; }
+.empty-message { color: gray; }
+
+.cart-actions {
+    display: flex; 
+    justify-content: flex-end; 
+    gap: 10px; 
+    margin-top: 20px; 
+}
+
+.btn-cart {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    font-size: 1.1em; 
+}
+
+.btn-pago {
+    background: rgba(255, 0, 0, 0.568);
+    color: white;
+    border: 2px solid #920a05;
+}
+
+.btn-pago:hover {
+    background: rgba(95, 3, 0, 0.507);
+}
+
+.btn-seguir {
+    background: white;
+    color: rgba(255, 0, 0, 0.568);
+    border: 2px solid #920a05;
+}
+
+.btn-seguir:hover {
+    background: rgba(95, 3, 0, 0.507);
+}
+
+.alerta-exito {
+    background-color: #d4edda; 
+    color: #155724; 
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    margin: 10px auto; 
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    max-width: 800px; 
+}
+
+.body-cart { 
+    font-family: Arial, sans-serif; 
+    padding: 20px; 
+}
+
+.container-cart {
+    display: flex;
+    justify-content: space-between; 
+    width: 90%; 
+    margin: 20px auto;
+    gap: 30px;
+}
+
+.body-cart-pago {
+    flex: 1; 
+    padding: 20px; 
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }

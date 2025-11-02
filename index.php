@@ -1,6 +1,29 @@
 <?php
 session_start();
 $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true;
+    //iniciar el carrito si no existe
+    if(!isset($_SESSION['carrito'])){
+        $_SESSION['carrito'] = [];
+    }
+
+    $numeroProd = 0;
+
+    // Si el carrito no está vacío, sumamos las cantidades
+    if (!empty($_SESSION['carrito'])) {
+        foreach ($_SESSION['carrito'] as $item) {
+            // Suma la cantidad de cada ítem al contador total
+            $numeroProd += $item['cantidad'];
+        }
+    }
+
+    if (isset($_SESSION['mensaje_carrito'])) {
+    // 1. Mostrar el mensaje en un div estilizado
+    echo '<div class="alerta-exito">' . htmlspecialchars($_SESSION['mensaje_carrito']) . '</div>';
+    
+    // 2. Eliminar el mensaje de la sesión para que no aparezca de nuevo al recargar
+    unset($_SESSION['mensaje_carrito']);
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,10 +63,12 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
                                 <img src="img/user.png" class="logo-user" alt="Logo User">
                             </a>
                         <?php endif; ?>
+                        <a href="verCarrito.php">
                         <img src="img/bag.png" class="logo-user" alt="Logo Cart">
+                        </a>
                         <div class="content-shopping-cart">
                             <span class="text">Carrito de Compras</span>
-                            <span class="number">(0)</span>
+                            <span class="number">(<?php echo $numeroProd; ?>)</span>
                         </div>
                     </div>
                 </div>
@@ -127,11 +152,13 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
                     </div>
                 </div>
             </section>
+                        <!--LANZAMIENTOS-->
             <section class="container latest-releases">
                 <h1 class="heading-1">ULTIMOS LANZAMIENTOS</h1>
                 <div class="container-products">
                     <div class="card-product">
                         <!--Lanzamiento 1-->
+                            
                         <div class="container-img">
                             <img src="img/ul1.jpg" class="latest" alt="Lan 1">
                             <div class="button-group">
@@ -145,79 +172,118 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
                                 </span>
                             </div>
                         </div>
-                        <div class="content-card-product">
-                                <h3>Chamarra de Lluvia Red Bull X HYPEBEAST</h3>
-                                <span class="add-cart">
-                                    <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                                </span>
-                                <p class="price">234,00 US$</p>
-                        </div>
-                    </div>
-                    <!--lanzamiento 2-->
-                    <div class="card-product">
-                        <div class="container-img">
-                            <img src="img/ul2.jpg" class="latest" alt="Lan 1">
-                            <div class="button-group">
-                                <span>
-                                    <img src="img/view.png" class="logo-elements" alt="Logo Vista">
-                                </span>
-                                <span>
-                                    <img src="img/fav.png" class="logo-elements" alt="Logo Fav">
-                                </span>
-                            </div>
-                        </div>
-                        <div class="content-card-product">
-                                <h3>Polo de chándal de réplica de Red Bull Racing X Hypebeast</h3>
-                                <span class="add-cart">
-                                    <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                                </span>
-                                <p class="price">137,00 US$</p>
-                        </div>
-                    </div>
-                    <!--lanzamiento 3-->
-                    <div class="card-product">
-                        <div class="container-img">
-                            <img src="img/ul3.jpg" class="latest" alt="Lan 1">
-                            <div class="button-group">
-                                <span>
-                                    <img src="img/view.png" class="logo-elements" alt="Logo Vista">
-                                </span>
-                                <span>
-                                    <img src="img/fav.png" class="logo-elements" alt="Logo Fav">
-                                </span>
-                            </div>
-                        </div>
-                        <div class="content-card-product">
-                                <h3>Sudadera con capucha extragrande McLaren New Era Worldmark - Negra</h3>
-                                <span class="add-cart">
-                                    <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                                </span>
-                                <p class="price">108,00 US$</p>
-                        </div>
-                    </div>
-                    <!--lanzamient0 4-->
-                    <div class="card-product">
-                        <div class="container-img">
-                            <img src="img/ul4.jpg" class="latest" alt="Lan 1">
-                            <div class="button-group">
-                                <span>
-                                    <img src="img/view.png" class="logo-elements" alt="Logo Vista">
-                                </span>
-                                <span>
-                                    <img src="img/fav.png" class="logo-elements" alt="Logo Fav">
-                                </span>
-                            </div>
-                        </div>
-                        <div class="content-card-product">
-                                <h3>Sudadera con capucha McLaren New Era lavada - Negro</h3>
-                                <span class="add-cart">
-                                    <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                                </span>
-                                <p class="price">120,00 US$</p>
-                        </div>
-                    </div>
+                        
+                        <form method="POST" action="agregarCarritoDef.php">
+                
+                            <input type="hidden" name="producto_id" value="10"> 
+                            <input type="hidden" name="nombre" value="Chamarra de Lluvia Red Bull X HYPEBEAST">
+                            <input type="hidden" name="precio" value="234.00">
+                            <input type="hidden" name="cantidad" value="1">
+                            <input type="hidden" name="talla" value="S"> <div class="content-card-product">
+                            <h3>Chamarra de Lluvia Red Bull X HYPEBEAST Talla S</h3>
+                    
+                            <button type="submit" name="añadir_rapido" class="add-cart">
+                                <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
+                            </button>
+                    
+                            <p class="price">234,00 US$</p>
+                        </form>
+                    </div>    
+                </div>
+
+                <div class="card-product">
+            <div class="container-img">
+                <img src="img/ul2.jpg" class="latest" alt="Lan 1">
+                <div class="button-group">
+                    <span>
+                        <img src="img/view.png" class="logo-elements" alt="Logo Vista">
+                    </span>
+                    <span>
+                        <img src="img/fav.png" class="logo-elements" alt="Logo Fav">
+                    </span>
+                </div>
+            </div>
+            
+            <form method="POST" action="agregarCarritoDef.php">
+                <input type="hidden" name="producto_id" value="11"> 
+                <input type="hidden" name="nombre" value="Polo de chándal de réplica de Red Bull Racing X Hypebeast">
+                <input type="hidden" name="precio" value="137.00">
+                <input type="hidden" name="cantidad" value="1">
+                <input type="hidden" name="talla" value="XL"> <div class="content-card-product">
+                    <h3>Polo de chándal de réplica de Red Bull Racing X Hypebeast Talla XL</h3>
+                    
+                    <button type="submit" name="añadir_rapido" class="add-cart">
+                        <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
+                    </button>
+                    
+                    <p class="price">137,00 US$</p>
+                </div>
+            </form>
+            </div>
+
+        <div class="card-product">
+            <div class="container-img">
+                <img src="img/ul3.jpg" class="latest" alt="Lan 1">
+                <div class="button-group">
+                    <span>
+                        <img src="img/view.png" class="logo-elements" alt="Logo Vista">
+                    </span>
+                    <span>
+                        <img src="img/fav.png" class="logo-elements" alt="Logo Fav">
+                    </span>
+                </div>
+            </div>
+            
+            <form method="POST" action="agregarCarritoDef.php">
+                <input type="hidden" name="producto_id" value="12"> 
+                <input type="hidden" name="nombre" value="Sudadera con capucha extragrande McLaren New Era Worldmark - Negra">
+                <input type="hidden" name="precio" value="108.00">
+                <input type="hidden" name="cantidad" value="1">
+                <input type="hidden" name="talla" value="M"> <div class="content-card-product">
+                    <h3>Sudadera con capucha extragrande McLaren New Era Worldmark - Negra Talla M</h3>
+                    
+                    <button type="submit" name="añadir_rapido" class="add-cart">
+                        <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
+                    </button>
+                    
+                    <p class="price">108,00 US$</p>
+                </div>
+            </form>
+            </div>
+
+        <div class="card-product">
+            <div class="container-img">
+                <img src="img/ul4.jpg" class="latest" alt="Lan 1">
+                <div class="button-group">
+                    <span>
+                        <img src="img/view.png" class="logo-elements" alt="Logo Vista">
+                    </span>
+                    <span>
+                        <img src="img/fav.png" class="logo-elements" alt="Logo Fav">
+                    </span>
+                </div>
+            </div>
+            
+            <form method="POST" action="agregarCarritoDef.php">
+                <input type="hidden" name="producto_id" value="13> 
+                <input type="hidden" name="nombre" value="Sudadera con capucha McLaren New Era lavada - Negro">
+                <input type="hidden" name="precio" value="120.00">
+                <input type="hidden" name="cantidad" value="1">
+                <input type="hidden" name="talla" value="L"> <div class="content-card-product">
+                    <h3>Sudadera con capucha McLaren New Era lavada - Negro Talla L</h3>
+                    
+                    <button type="submit" name="añadir_rapido" class="add-cart">
+                        <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
+                    </button>
+                    
+                    <p class="price">120,00 US$</p>
+                </div>
+            </form>
+            </div>    
+
                 </div>
             </section>
+
             <!--Collage Imagenes-->
             <section class="gallery">
                 <img src="img/g2.jpg" alt="gallery Img1" class="gallery-img-1">

@@ -1,3 +1,21 @@
+<?php
+    session_start();
+
+    //iniciar el carrito si no existe
+    if(!isset($_SESSION['carrito'])){
+        $_SESSION['carrito'] = [];
+    }
+
+    $numeroProd = 0;
+
+    // Si el carrito no está vacío, sumamos las cantidades
+    if (!empty($_SESSION['carrito'])) {
+        foreach ($_SESSION['carrito'] as $item) {
+            // Suma la cantidad de cada ítem al contador total
+            $numeroProd += $item['cantidad'];
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html>
@@ -30,7 +48,7 @@
                         <img src="img/bag.png" class="logo-user" alt="Logo Cart">
                         <div class="content-shopping-cart">
                             <span class="text">Carrito de Compras</span>
-                            <span class="number">(0)</span>
+                            <span class="number">(<?php echo $numeroProd; ?>)</span>
                         </div>
                     </div>
                 </div>
@@ -50,30 +68,38 @@
                     </div>
 
                     <div class="product-info">
-                        <h1 class="product-title">Chamarra de Lluvia Red Bull X HYPEBEAST<</h1>
-                        <p class="product-price">234,00 US$</p>
+                        <form method="POST" action="agregarCarrito.php">
+                            <input type="hidden" name="producto_id" value="RBR_HYPE_RAIN_JKT"> 
+                            <input type="hidden" name="nombre" value="Chamarra de Lluvia Red Bull X HYPEBEAST">
+                            <input type="hidden" name="precio" value="234.00"> 
 
-                        <p class="size-guide-link">GUÍA DE TALLAS.</p>
+                            <h1 class="product-title">Chamarra de Lluvia Red Bull X HYPEBEAST</h1>
+                            <p class="product-price">234,00 US$</p>
 
-                        <div class="size-selector-group">
-                            <label for="size-select">Talla</label>
-                            <select id="size-select" class="size-select">
-                                <option>Elige una opción</option>
-                                <option value="s">S</option>
-                                <option value="m">M</option>
-                                <option value="l">L</option>
-                                <option value="xl">XL</option>
-                            </select>
-                        </div>
-
-                        <div class="add-to-cart-group">
-                            <div class="quantity-control">
-                                <button class="qty-btn" id="decrease-qty">-</button>
-                                <input type="text" value="1" id="quantity" class="qty-input">
-                                <button class="qty-btn" id="increase-qty">+</button>
+                            <a href="tallas/guiaTallas.pdf" target="_blank" class="size-guide-link">
+                                GUÍA DE TALLAS.
+                            </a>
+        
+                            <div class="size-selector-group">
+                                <label for="size-select">Talla</label>
+                                <select id="size-select" class="size-select" name="talla" required>
+                                    <option value="">Elige una opción</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
                             </div>
-                            <button class="add-to-cart-btn">AÑADIR AL CARRITO</button>
-                        </div>
+
+                            <div class="add-to-cart-group">
+                                <div class="quantity-control">
+                                    <button class="qty-btn" id="decrease-qty" type="button">-</button>
+                                    <input type="number" value="1" min="1" id="quantity" class="qty-input" name="cantidad">
+                                    <button class="qty-btn" id="increase-qty" type="button">+</button>
+                                </div>
+                                <button type="submit" name="añadir_carrito" class="add-to-cart-btn">AÑADIR AL CARRITO</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 

@@ -1,5 +1,4 @@
 <?php
-
 Class Database{
     private $servidor="localhost";
     private $usuario="root";
@@ -10,7 +9,7 @@ Class Database{
     function conectar(){
         try{
             $conexion = "mysql:host=".$this->servidor."; dbname=".$this->bd.";
-            chasrset=".$this->charset;
+            charset=".$this->charset;
 
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -21,10 +20,9 @@ Class Database{
 
             return $pdo;
         }catch(PDOException $e){
-            echo "Error conexion: ".$e->getMessage();
-            exit;
+            //echo "Error conexion: ".$e->getMessage();
+            //exit;
+            throw $e;
         }
     }
 }
-
-?>
