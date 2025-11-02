@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// Destruir todas las variables de sesión
+// DestruYe todas las variables de sesión
 $_SESSION = array();
 
-// Destruir la sesión
+// DestruYe la sesión
 session_destroy();
 
-// Redirigir a la página principal
+// Redirige a la página principal
 header("location: index.php");
 exit;
 ?>

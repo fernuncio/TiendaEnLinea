@@ -174,6 +174,14 @@ if (session_status() === PHP_SESSION_NONE) {
             <!-- Botones de Acción -->
             <div class="buttons-section">
                 <a href="index.php" class="btn-action btn-secondary">← Volver a la Tienda</a>
+                <?php 
+                
+                if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'admin'): 
+                ?>
+                <a href="Inventario.php" class="btn-action btn-inventario">Inventario</a>
+                <?php 
+                endif; 
+                 ?>
                 <a href="codigo_cerar_sesion.php" class="btn-action">Cerrar Sesión →</a>
             </div>
         </div>

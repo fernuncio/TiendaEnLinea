@@ -55,7 +55,7 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
                             <a href="perfil.php" title="Mi Perfil">
                                 <img src="img/user.png" class="logo-user" alt="Logo User">
                             </a>
-                            <span class="text" style="margin-left: 5px; color: #666;">
+                            <span class="text" style="margin-left: 5px; color: #ffffffff;">
                                 Hola, <?php echo htmlspecialchars($_SESSION["nombre"]); ?>
                             </span>
                         <?php else: ?>

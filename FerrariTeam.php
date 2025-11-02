@@ -3,7 +3,7 @@
     $db = new Database();
     $con = $db->conectar();
     $sql = $con->prepare("SELECT id_producto,nombre,precio,URLimg FROM 
-                          productos WHERE activo=1");
+                          productos WHERE activo=1 AND equipo = 'A7K92E5B3X'");
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     session_start();
@@ -55,7 +55,7 @@
                             <a href="perfil.php" title="Mi Perfil">
                                 <img src="img/user.png" class="logo-user" alt="Logo User">
                             </a>
-                            <span class="text" style="margin-left: 5px; color: #666;">
+                            <span class="text" style="margin-left: 5px; color: #ffffffff;">
                                 Hola, <?php echo htmlspecialchars($_SESSION["nombre"]); ?>
                             </span>
                         <?php else: ?>
@@ -91,7 +91,7 @@
                         <li><a href="#">Coleccionables</a></li>
                         <li><a href="#">Oferta</a></li>
                         <li><a href="#">Contacto</a></li>
-                        <li><a href="iniciarSesion.php">Mi Cuenta</a></li>
+                        <li><a href="perfil.php">Mi Cuenta</a></li>
                     </ul>
                     <form class="search-form">
                         <input type="search" placeholder="Buscar..."/>

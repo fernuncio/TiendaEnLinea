@@ -1,5 +1,5 @@
 <?php
-require_once "Configuracion/database.php";  // Archivo con tu clase PDO
+require_once "Configuracion/database.php";  
 
 $db = new Database();
 $pdo = $db->conectar();
@@ -10,7 +10,7 @@ $username_error = $email_error = $password_err = $confi_password_err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    // VALIDANDO NOMBRE DE USUARIO
+    // VALIDA NOMBRE DE USUARIO
     if(empty(trim($_POST["user"]))){
         $username_error = "Por favor, ingrese un nombre de usuario";
     } else {
@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    // VALIDANDO EMAIL
+    // VALIDA EMAIL
     if(empty(trim($_POST["email"]))){
         $email_error = "Por favor, ingrese un correo electrónico";
     } else {
@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    // VALIDAR CONTRASEÑA
+    // VALIDA CONTRASEÑA
     if(empty(trim($_POST["password"]))){
         $password_err = "Por favor, ingrese una contraseña";
     } else if(strlen(trim($_POST["password"])) < 6){
@@ -49,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = trim($_POST["password"]);
     }
 
-    // CONFIRMAR CONTRASEÑA
+    // CONFIRMA CONTRASEÑA
     if(empty(trim($_POST["confi_password"]))){
         $confi_password_err = "Por favor, confirme su contraseña";
     } else {

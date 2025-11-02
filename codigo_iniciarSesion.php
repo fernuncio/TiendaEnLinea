@@ -38,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$email]);
 
-        // ver si existe nuestrousuario
+        // ver si existe el usuario
         if($stmt->rowCount() == 1){
             $fila = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             $hashed_password = $fila["contrasena"];
             $rol = $fila["rol"];
 
-            // verificar contraseña
+            // verifica contraseña
             if(password_verify($password, $hashed_password)){
 
                 // variables de inicio de sesion 
@@ -60,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
                 //lo mandamos depende de su rol
                 if($rol == "admin"){
-                    header("location: admin/dashboard.php");
+                    header("location: inventario.php");
                 } else {
                     header("location: index.php");
                 }
