@@ -22,7 +22,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chamarra de Lluvia Red Bull X HYPEBEAST</title>
+    <title>Sudadera con capucha McLaren New Era lavada - Negro</title>
     <link rel="stylesheet" href="style.css"/>
     <link rel="icon" type="image/x-icon" href="img/volante.png">
 </head>
@@ -59,22 +59,22 @@
             <div class="container-product">
                 <div class="breadcrumbs">
                     <a href="index.php">INICIO</a> / 
-                    <a href="#">RED BULL RACING</a>
+                    <a href="#">McLaren</a>
                 </div>
 
                 <div class="product-layout">
                     <div class="product-image">
-                        <img src="img/ul1.jpg" alt="Chamarra de Lluvia Red Bull X HYPEBEAST<" class="main-product-img"> 
+                        <img src="img/ul4.jpg" alt="Polo de chándal de réplica de Red Bull Racing X Hypebeast<" class="main-product-img"> 
                     </div>
 
                     <div class="product-info">
                         <form method="POST" action="agregarCarrito.php">
-                            <input type="hidden" name="producto_id" value="RBR_HYPE_RAIN_JKT"> 
-                            <input type="hidden" name="nombre" value="Chamarra de Lluvia Red Bull X HYPEBEAST">
-                            <input type="hidden" name="precio" value="234.00"> 
+                            <input type="hidden" name="producto_id" value="13"> 
+                            <input type="hidden" name="nombre" value="Sudadera con capucha McLaren New Era lavada - Negro">
+                            <input type="hidden" name="precio" value="120.00"> 
 
-                            <h1 class="product-title">Chamarra de Lluvia Red Bull X HYPEBEAST</h1>
-                            <p class="product-price">234,00 US$</p>
+                            <h1 class="product-title">Sudadera con capucha McLaren New Era lavada - Negro</h1>
+                            <p class="product-price">120,00 US$</p>
 
                             <a href="tallas/guiaTallas.pdf" target="_blank" class="size-guide-link">
                                 GUÍA DE TALLAS.
@@ -109,15 +109,19 @@
                         <h2>Descripción</h2>
                     </div>
                     <div class="description-content">
-                        <p>Vive el estilo de Texas con la Sudadera McLaren F1 GP Austin 2025. Esta sudadera con capucha luce gráficos serigrafiados, lo que la convierte en una forma elegante de mostrar tu apoyo al equipo McLaren F1. Además, con un bolsillo frontal tipo canguro y una confección de peso medio, es práctica y cómoda para temperaturas moderadas.</p>
-                        
+                        <p>Celebra la colaboración de McLaren y New Era con la colección Washed Pack y lleva contigo la Sudadera McLaren X New Era 2025 Negra Oversize.</p>
+
                         <ul>
-                            <li>Bolsillo frontal tipo cangurera</li>
-                            <li>Sudadera con capucha de peso medio adecuada para temperaturas moderadas.</li>
-                            <li>Material: 70% algodón/30% poliéster</li>
-                            <li>Manga larga</li>
-                            <li>Pull-over</li>
-                            <li>Con licencia oficial</li>
+                            <li>Sudadera extragrande McLaren Racing Washed Pack</li>
+                            <li>Marca del equipo McLaren de Fórmula 1 con el logotipo de Speedmark en la parte delantera</li>
+                            <li>Marca del equipo McLaren de Fórmula 1 con el logotipo de Speedmark en la parte inferior delantera derecha</li>
+                            <li>Marca Forever Forward EST 1963 con el logotipo de Speedmark en la parte trasera</li>
+                            <li>Bandera de New Era bordada en la manga izquierda</li>
+                            <li>Bolsillo tipo canguro en la parte delantera</li>
+                            <li>Capucha con cordón</li>
+                            <li>Corte oversize</li>
+                            <li>Confeccionado con tejido con efecto lavado</li>
+                            <li>Material: 100 % Algodón</li>
                         </ul>
                     </div>
                 </section>

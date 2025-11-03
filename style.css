@@ -2592,3 +2592,49 @@ textarea.input-modal {
 .btn-cancel:hover {
     background: #555;
 }
+
+/*lanzaminetos*/
+/* --- NUEVAS REGLAS PARA EL PRODUCTO AGOTADO --- */
+
+/* 1. Estilo y Posicionamiento de la etiqueta AGOTADO */
+/* Esta regla crea el overlay semi-transparente con el texto centrado */
+.etiqueta-agotado {
+    /* POSICIONAMIENTO CLAVE: Se posiciona ABSOLUTO dentro del .container-img RELATIVO */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Efecto visual: Negro semi-transparente con texto blanco */
+    background-color: rgba(0, 0, 0, 0.65); /* Mantiene el contraste sin oscurecer totalmente */
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Añadido para mejor visibilidad */
+    z-index: 10; /* Asegura que la etiqueta esté siempre por encima */
+    
+    /* Centrado del texto usando Flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. Reglas para el estado AGOTADO de la tarjeta */
+/* Esto deshabilita la interacción en toda la tarjeta si está agotada */
+.card-product.agotado {
+    /* pointer-events: none evita que el cursor interactúe con el elemento */
+    pointer-events: none; 
+}
+
+/* 3. Opcional: Estilo para el botón deshabilitado dentro de la tarjeta agotada */
+.card-product.agotado .add-cart {
+    opacity: 0.4; /* Reduce la opacidad del botón para indicar inactividad */
+    border-color: darkgray; /* Mantener color de borde */
+    cursor: not-allowed;
+}
+
+/* --- TU CÓDIGO ORIGINAL (SIN CAMBIOS) --- */
+
+/*Lanzamientos*/

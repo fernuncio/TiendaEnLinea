@@ -1,4 +1,5 @@
 <?php
+require_once 'Configuracion/database.php'; 
 session_start();
 $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true;
     //iniciar el carrito si no existe
@@ -17,11 +18,29 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
     }
 
     if (isset($_SESSION['mensaje_carrito'])) {
-    // 1. Mostrar el mensaje en un div estilizado
+    // mostrar el mensaje en un div estilizado
     echo '<div class="alerta-exito">' . htmlspecialchars($_SESSION['mensaje_carrito']) . '</div>';
     
-    // 2. Eliminar el mensaje de la sesión para que no aparezca de nuevo al recargar
+    // eliminar el mensaje de la sesión para que no aparezca de nuevo al recargar
     unset($_SESSION['mensaje_carrito']);
+}
+
+
+
+$productos = [];
+try {
+    $db = new Database();
+    $pdo = $db->conectar();
+
+    $sql = "SELECT id_producto, nombre, precio, stock, URLimg
+            FROM productos 
+            WHERE recienteL=1";
+    
+    $stmt = $pdo->query($sql);
+    $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+} catch (PDOException $e) {
+    echo "Error de conexión/consulta: " . $e->getMessage();
 }
 
 ?>
@@ -156,8 +175,62 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
             <section class="container latest-releases">
                 <h1 class="heading-1">ULTIMOS LANZAMIENTOS</h1>
                 <div class="container-products">
-                    <div class="card-product">
-                        <!--Lanzamiento 1-->
+                    <?php
+                        $i = 1; 
+                        foreach($productos as $producto):
+                            $stock_actual = (int)$producto['stock'];
+                            $agotado = ($stock_actual <= 0);
+
+                            $clase_card = $agotado ? 'card-product agotado' : 'card-product';
+                            $overlay_agotado = $agotado ? '<div class="etiqueta-agotado">AGOTADO</div>' : '';
+                    ?>
+
+                    <div class="<?php echo $clase_card; ?>">
+                        <div class="container-img">
+                            <img src="<?php echo htmlspecialchars($producto['URLimg']); ?>" class="latest" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+
+                            <?php echo $overlay_agotado; ?>
+
+                        <div class="button-group">
+                            <span>
+                                <?php $url_producto = 'Producto' . $i . 'L.php'; ?>
+                                <a href="<?php echo $url_producto; ?>">
+                                    <img src="img/view.png" class="logo-elements" alt="Logo Vista">
+                                </a>
+                            </span>
+                            <span>
+                                <img src="img/fav.png" class="logo-elements" alt="Logo Fav">
+                            </span>
+                        </div>
+
+                        <form method="POST" action="agregarCarritoDef.php">
+                            <input type="hidden" name="producto_id" value="<?php echo htmlspecialchars($producto['id_producto']); ?>"> 
+                            <input type="hidden" name="nombre" value="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                            <input type="hidden" name="precio" value="<?php echo htmlspecialchars($producto['precio']); ?>">
+                            <input type="hidden" name="cantidad" value="1">
+                            <input type="hidden" name="talla" value="L">
+
+                            <div class="content-card-product">
+                                <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
+            
+                                <button type="submit" name="añadir_rapido" class="add-cart" <?php echo $agotado ? 'disabled' : ''; ?>>
+                                    <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
+                                </button>
+            
+                                <p class="price"><?php echo number_format($producto['precio'], 2, ',', '.'); ?> US$</p>
+                            </div>
+                        </form>
+                    </div>
+                </div> 
+                    <?php
+                        $i++; 
+                        endforeach; 
+                    ?>
+                </div>
+            </section>
+                    
+                        <!--       <div class="card-product">
+                       
                             
                         <div class="container-img">
                             <img src="img/ul1.jpg" class="latest" alt="Lan 1">
@@ -283,7 +356,7 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
 
                 </div>
             </section>
-
+                        -->
             <!--Collage Imagenes-->
             <section class="gallery">
                 <img src="img/g2.jpg" alt="gallery Img1" class="gallery-img-1">
