@@ -50,7 +50,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F1 Store</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css?v=2"/>
     <link rel="icon" type="image/x-icon" href="img/volante.png">
 </head>
     <body>
@@ -121,6 +121,17 @@ try {
                 </nav>
             </div>
         </header>
+        <script>
+        // Detectar scroll y agregar clase
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.container-navbar');
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        </script>
         <section class="banner">
             <div class="content-banner">
                 <p>Playera Piloto</p>
@@ -154,7 +165,177 @@ try {
                 </div>
             </section>
             <!--Colecciones-->
-            <section class="container top-collections">
+            <div class="slider-container">
+        <h1 class="heading-1">COLECCIONES EN TENDENCIA</h1>
+        <div class="slider-wrapper">
+            <div class="slider-track" id="sliderTrack">
+                <div class="slide" src="img/c1.jpg">
+                    <div class="slide-content">
+                        <p class="slide-title">Cascos de colección</p>
+                        <span>Ver más</span>
+                    </div>
+                </div>
+
+                <div class="slide" src="img/c2.jpg">
+                    <div class="slide-content">
+                        <p class="slide-title">Colecciones F1®</p>
+                        <span>Ver más</span>
+                    </div>
+                </div>
+
+                <div class="slide" src="img/c3.jpg">
+                    <div class="slide-content">
+                        <p class="slide-title">Ropa de equipo 2025</p>
+                        <span>Ver más</span>
+                    </div>
+                </div>
+
+                <div class="slide" src="img/c4.jpg">
+                    <div class="slide-content">
+                        <p class="slide-title">Últimos estilos en gorras</p>
+                        <span>Ver más</span>
+                    </div>
+                </div>
+
+                <div class="slide" src="img/c5.jpg">
+                    <div class="slide-content">
+                        <p class="slide-title">Ropa de fan de Mercedes</p>
+                        <span>Ver más</span>
+                    </div>
+                </div>
+
+                <div class="slide" src="img/c6.jpg">
+                    <div class="slide-content">
+                        <p class="slide-title">Vegas X Snoopy</p>
+                        <span>Ver más</span>
+                    </div>
+                </div>
+
+                <div class="slide" src="img/c7.jpg">
+                    <div class="slide-content">
+                        <p class="slide-title">Regístrate para el Black Friday</p>
+                        <span>Ver más</span>
+                    </div>
+                </div>
+
+                <div class="slide" src="img/c8.jpg">
+                    <div class="slide-content">
+                        <p class="slide-title">Ropa de aficionado de RB HUGO</p>
+                        <span>Ver más</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="nav-button prev" onclick="moverCarrusel(-1)">‹</button>
+            <button class="nav-button next" onclick="moverCarrusel(1)">›</button>
+        </div>
+
+        <div class="dots-container" id="dotsContainer"></div>
+    </div>
+
+    <script>
+        // variables principales
+        let posicionActual = 0;
+        const todasLasDiapositivas = document.querySelectorAll('.slide');
+        const totalDiapositivas = todasLasDiapositivas.length;
+        const contenedorPrincipal = document.getElementById('sliderTrack');
+        const zonaPuntos = document.getElementById('dotsContainer');
+        const anchoVentana = window.innerWidth;
+        
+        // calculamos cuantas diapositivas se ven a la vez
+        let diapositivasVisibles = 4;
+        if (anchoVentana <= 480) {
+            diapositivasVisibles = 1;
+        } else if (anchoVentana <= 768) {
+            diapositivasVisibles = 2;
+        } else if (anchoVentana <= 1200) {
+            diapositivasVisibles = 3;
+        }
+
+        const totalPaginas = Math.ceil(totalDiapositivas / diapositivasVisibles);
+
+        // aplicar las imgs de fondo desde el atributo src
+        todasLasDiapositivas.forEach(diapositiva => {
+            const imagenUrl = diapositiva.getAttribute('src');
+            if (imagenUrl) {
+                diapositiva.style.backgroundImage = `url('${imagenUrl}')`;
+            }
+        });
+
+        // creamos los puntos indicadores
+        for (let i = 0; i < totalPaginas; i++) {
+            const punto = document.createElement('div');
+            punto.classList.add('dot');
+            if (i === 0) punto.classList.add('active');
+            punto.addEventListener('click', () => irAPagina(i));
+            zonaPuntos.appendChild(punto);
+        }
+
+        const puntosIndicadores = document.querySelectorAll('.dot');
+
+        function actualizarCarrusel() {
+            const anchoSlide = todasLasDiapositivas[0].offsetWidth;
+            const espacioGap = 20;
+            const desplazamiento = posicionActual * (anchoSlide + espacioGap) * diapositivasVisibles;
+            contenedorPrincipal.style.transform = `translateX(-${desplazamiento}px)`;
+            
+            puntosIndicadores.forEach((punto, indice) => {
+                punto.classList.toggle('active', indice === posicionActual);
+            });
+        }
+
+        function moverCarrusel(direccion) {
+            posicionActual += direccion;
+            
+            if (posicionActual < 0) {
+                posicionActual = totalPaginas - 1;
+            } else if (posicionActual >= totalPaginas) {
+                posicionActual = 0;
+            }
+            
+            actualizarCarrusel();
+        }
+
+        function irAPagina(numeroPagina) {
+            posicionActual = numeroPagina;
+            actualizarCarrusel();
+        }
+
+        // variable que usamos para deslizar el dedo
+        let inicioToque = 0;
+        let finToque = 0;
+
+        const areaCarrusel = document.querySelector('.slider-wrapper');
+        areaCarrusel.addEventListener('touchstart', (evento) => {
+            inicioToque = evento.changedTouches[0].screenX;
+        });
+
+        areaCarrusel.addEventListener('touchend', (evento) => {
+            finToque = evento.changedTouches[0].screenX;
+            detectarDeslizamiento();
+        });
+
+        function detectarDeslizamiento() {
+            if (finToque < inicioToque - 50) {
+                moverCarrusel(1);
+            }
+            if (finToque > inicioToque + 50) {
+                moverCarrusel(-1);
+            }
+        }
+
+        // para la nav del teclado
+        document.addEventListener('keydown', (evento) => {
+            if (evento.key === 'ArrowLeft') moverCarrusel(-1);
+            if (evento.key === 'ArrowRight') moverCarrusel(1);
+        });
+
+        // actualizar cuando se cambia el tamaño de la ventana
+        window.addEventListener('resize', () => {
+            location.reload();
+        });
+    </script>
+        <!--    <section class="container top-collections">
                 <h1 class="heading-1">COLECCIONES EN TENDENCIA</h1>
                 <div class="container-collections">
                     <div class="card-collections collections-f1">
@@ -170,7 +351,7 @@ try {
                         <span>Ver más</span>
                     </div>
                 </div>
-            </section>
+            </section> -->
                         <!--LANZAMIENTOS-->
             <section class="container latest-releases">
                 <h1 class="heading-1">ULTIMOS LANZAMIENTOS</h1>
@@ -390,6 +571,9 @@ try {
                 </div>
             </section>
         </main>
+
+        
+
         <footer class="footer">
             <div class="container container-footer">
                 <div class="menu-footer">

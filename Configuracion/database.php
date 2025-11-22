@@ -1,9 +1,13 @@
 <?php
 Class Database{
-    private $servidor="sql210.infinityfree.com";
-    private $usuario="if0_40318561";
-    private $password="AY4WRCWuCLo";
-    private $bd="if0_40318561_sistema_ventas";
+    //private $servidor="sql210.infinityfree.com";
+    //private $usuario="if0_40318561";
+    //private $password="AY4WRCWuCLo";
+    //private $bd="if0_40318561_sistema_ventas";
+    private $servidor="localhost";
+    private $usuario="root";
+    private $password="root";
+    private $bd="sistema_ventas";
     private $charset = 'utf8';
 
     function conectar(){
