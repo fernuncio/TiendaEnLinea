@@ -275,4 +275,7 @@ if (!empty($_SESSION['carrito']) && is_array($_SESSION['carrito'])) {
         <?php endif; ?>
     </div>
 </body>
+
+
+
 </html>

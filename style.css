@@ -1792,6 +1792,16 @@ textarea.input-modal {
         padding: 25px;
     }
 
+    /* Botón subir responsive */
+    #boton-subir {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    
+
     
 }
 
@@ -3320,6 +3330,7 @@ text-align: center;
 
 /* Botón de acción */
 .boton-oferta-ahora {
+    
     background: white;
     color: #e10600;
     border: none;
@@ -3379,3 +3390,41 @@ text-align: center;
     font-weight: bold;
 }
 
+/*BOTÓN SUBIR ARRIBA*/
+#boton-subir {
+    
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #e10600;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(225, 6, 0, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.5);
+    transition: all 0.3s ease;
+}
+
+#boton-subir.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+#boton-subir:hover {
+    background-color: #ff0000;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+}
+
+#boton-subir:active {
+    transform: scale(0.95);
+}

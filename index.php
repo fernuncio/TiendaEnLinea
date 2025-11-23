@@ -766,5 +766,28 @@ $('#ratingOverlay').click(function() {
         <span style="font-size: 20px;">💬</span>
         <span>Chatea con Nosotros</span>
     </div>
+    <div class ="boton.subir">
+   <button id="boton-subir" title="Subir arriba">↑</button>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const botonSubir = document.getElementById('boton-subir');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                botonSubir.classList.add('visible');
+            } else {
+                botonSubir.classList.remove('visible');
+            }
+        });
+        
+        botonSubir.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
     </body>
 </html>
