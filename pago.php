@@ -63,6 +63,7 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
                         <li><a href="#">Coleccionables</a></li>
                         <li><a href="#">Ofertas</a></li>
                         <li><a href="#">Contacto</a></li>
+                        <li><a href="navidad.php">Navidad</a></li>
                         <li><a href="perfil.php">Mi Cuenta</a></li>
                     </ul>
                     <form class="search-form">
@@ -81,10 +82,8 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
                 <h1>Detalles de Pago</h1>
                 <div id="paypal-button-container">
                     <?php
-    // ************************************************
-    // 1. CALCULA EL TOTAL GENERAL PRIMERO (FUERA DEL JS)
-    // ************************************************
-    $total_general = 0; // **IMPORTANTE: Inicializar a 0**
+
+    $total_general = 0; 
 
     // Itera sobre cada producto en el array de la sesión
     if (isset($_SESSION['carrito']) && is_array($_SESSION['carrito'])) {
@@ -95,7 +94,7 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
             $total_general += $subtotal;
         }
     }
-    // Formatea el total para la salida en JS/JSON (dos decimales)
+    // Formatea el total para la salida
     $total_formateado = number_format($total_general, 2, '.', '');
 ?>
 
@@ -263,5 +262,10 @@ $usuario_logueado = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === tr
 				</div>
             </div>
         </footer>
+        <!-- Botón de chat -->
+    <div class="chat-widget">
+        <span style="font-size: 20px;">💬</span>
+        <span>Chatea con Nosotros</span>
+    </div>
 </body>
 </html>

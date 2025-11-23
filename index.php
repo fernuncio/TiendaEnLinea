@@ -52,6 +52,7 @@ try {
     <title>F1 Store</title>
     <link rel="stylesheet" href="style.css?v=2"/>
     <link rel="icon" type="image/x-icon" href="img/volante.png">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 </head>
     <body>
         <header>
@@ -110,6 +111,7 @@ try {
                         <li><a href="#">Coleccionables</a></li>
                         <li><a href="#">Ofertas</a></li>
                         <li><a href="#">Contacto</a></li>
+                        <li><a href="navidad.php">Navidad</a></li>
                         <li><a href="perfil.php">Mi Cuenta</a></li>
                     </ul>
                     <form class="search-form">
@@ -354,61 +356,194 @@ try {
             </section> -->
                         <!--LANZAMIENTOS-->
             <section class="container latest-releases">
-                <h1 class="heading-1">ULTIMOS LANZAMIENTOS</h1>
-                <div class="container-products">
-                    <?php
-                        $i = 1; 
-                        foreach($productos as $producto):
-                            $stock_actual = (int)$producto['stock'];
-                            $agotado = ($stock_actual <= 0);
+    <h1 class="heading-1">ULTIMOS LANZAMIENTOS</h1>
+    <div class="container-products">
+        <?php
+            $i = 1; 
+            foreach($productos as $producto):
+                $stock_actual = (int)$producto['stock'];
+                $agotado = ($stock_actual <= 0);
 
-                            $clase_card = $agotado ? 'card-product agotado' : 'card-product';
-                            $overlay_agotado = $agotado ? '<div class="etiqueta-agotado">AGOTADO</div>' : '';
-                    ?>
+                $clase_card = $agotado ? 'card-product agotado' : 'card-product';
+                $overlay_agotado = $agotado ? '<div class="etiqueta-agotado">AGOTADO</div>' : '';
+                
+                // simulacion de los datos de la calif(no bd)
+                $calificacion_promedio = rand(35, 50) / 10; 
+                $total_calificaciones = rand(10, 150);
+        ?>
 
-                    <div class="<?php echo $clase_card; ?>">
-                        <div class="container-img">
-                            <img src="<?php echo htmlspecialchars($producto['URLimg']); ?>" class="latest" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+        <div class="<?php echo $clase_card; ?>" data-producto-id="<?php echo $producto['id_producto']; ?>">
+            <div class="container-img">
+                <img src="<?php echo htmlspecialchars($producto['URLimg']); ?>" class="latest" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
 
-                            <?php echo $overlay_agotado; ?>
+                <?php echo $overlay_agotado; ?>
 
-                        <div class="button-group">
-                            <span>
-                                <?php $url_producto = 'Producto' . $i . 'L.php'; ?>
-                                <a href="<?php echo $url_producto; ?>">
-                                    <img src="img/view.png" class="logo-elements" alt="Logo Vista">
-                                </a>
-                            </span>
-                            <span>
-                                <img src="img/fav.png" class="logo-elements" alt="Logo Fav">
-                            </span>
-                        </div>
-
-                        <form method="POST" action="agregarCarritoDef.php">
-                            <input type="hidden" name="producto_id" value="<?php echo htmlspecialchars($producto['id_producto']); ?>"> 
-                            <input type="hidden" name="nombre" value="<?php echo htmlspecialchars($producto['nombre']); ?>">
-                            <input type="hidden" name="precio" value="<?php echo htmlspecialchars($producto['precio']); ?>">
-                            <input type="hidden" name="cantidad" value="1">
-                            <input type="hidden" name="talla" value="L">
-
-                            <div class="content-card-product">
-                                <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
-            
-                                <button type="submit" name="añadir_rapido" class="add-cart" <?php echo $agotado ? 'disabled' : ''; ?>>
-                                    <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
-                                </button>
-            
-                                <p class="price"><?php echo number_format($producto['precio'], 2, ',', '.'); ?> US$</p>
-                            </div>
-                        </form>
-                    </div>
-                </div> 
-                    <?php
-                        $i++; 
-                        endforeach; 
-                    ?>
+                <div class="button-group">
+                    <span>
+                        <?php $url_producto = 'Producto' . $i . 'L.php'; ?>
+                        <a href="<?php echo $url_producto; ?>">
+                            <img src="img/view.png" class="logo-elements" alt="Logo Vista">
+                        </a>
+                    </span>
+                    <span>
+                        <img src="img/fav.png" class="logo-elements" alt="Logo Fav">
+                    </span>
                 </div>
-            </section>
+
+                <form method="POST" action="agregarCarritoDef.php">
+                    <input type="hidden" name="producto_id" value="<?php echo htmlspecialchars($producto['id_producto']); ?>"> 
+                    <input type="hidden" name="nombre" value="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                    <input type="hidden" name="precio" value="<?php echo htmlspecialchars($producto['precio']); ?>">
+                    <input type="hidden" name="cantidad" value="1">
+                    <input type="hidden" name="talla" value="L">
+
+                    <div class="content-card-product">
+                        <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
+                        
+                        
+    
+                        <button type="submit" name="añadir_rapido" class="add-cart" <?php echo $agotado ? 'disabled' : ''; ?>>
+                            <img src="img/add-to-cart.png" class="logo-elements" alt="Logo Add">
+                        </button>
+                        <!-- calif estrellas-->
+                        <div class="rating-container">
+                            <div class="star-rating" data-rating="0" data-producto-id="<?php echo $producto['id_producto']; ?>">
+                                <span class="star" data-value="1">★</span>
+                                <span class="star" data-value="2">★</span>
+                                <span class="star" data-value="3">★</span>
+                                <span class="star" data-value="4">★</span>
+                                <span class="star" data-value="5">★</span>
+                            </div>
+                            <span class="average-rating"><?php echo number_format($calificacion_promedio, 1); ?></span>
+                            <span class="rating-count">(<?php echo $total_calificaciones; ?>)</span>
+                        </div>
+                        <p class="price"><?php echo number_format($producto['precio'], 2, ',', '.'); ?> US$</p>
+                    
+                    </div>
+                </form>
+            </div>
+        </div> 
+        <?php
+            $i++; 
+            endforeach; 
+        ?>
+    </div>
+</section>
+
+<!-- el modal para confirmar la calif -->
+<div class="modal-overlay" id="ratingOverlay"></div>
+<div class="rating-modal" id="ratingModal">
+    <h3>¡Gracias por tu calificación!</h3>
+    <p>Has calificado este producto con <span id="selectedRating">0</span> estrellas</p>
+    <button onclick="cerrarModalCalificacion()" style="padding: 10px 20px; background: #e10600; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">Cerrar</button>
+</div>
+
+<script>
+$(document).ready(function() {
+    // iniciar la calif basada en la promedio
+    $('.star-rating').each(function() {
+        const contenedor = $(this).closest('.card-product');
+        const calificacionPromedio = parseFloat(contenedor.find('.average-rating').text());
+        actualizarVisualizacionEstrellas($(this), calificacionPromedio);
+    });
+
+    // aqui se maneja el hover 
+    $('.star').hover(
+        function() {
+            const valor = $(this).data('value');
+            const contenedorEstrellas = $(this).parent();
+            resaltarEstrellas(contenedorEstrellas, valor);
+        },
+        function() {
+            const contenedorEstrellas = $(this).parent();
+            const calificacionActual = contenedorEstrellas.data('rating');
+            resaltarEstrellas(contenedorEstrellas, calificacionActual);
+        }
+    );
+
+    // click de las estrellas
+    $('.star').click(function(evento) {
+        evento.preventDefault();
+        const valor = $(this).data('value');
+        const contenedorEstrellas = $(this).parent();
+        const idProducto = contenedorEstrellas.data('producto-id');
+        
+        // guardamos la calif
+        contenedorEstrellas.data('rating', valor);
+        
+        // animacion de estrellas seleccionadas
+        $(this).addClass('animate');
+        setTimeout(() => {
+            $(this).removeClass('animate');
+        }, 300);
+        
+        // actualizar vista
+        resaltarEstrellas(contenedorEstrellas, valor);
+        
+        // mostrar el modal
+        $('#selectedRating').text(valor);
+        $('#ratingModal').addClass('show');
+        $('#ratingOverlay').addClass('show');
+        
+        // enviar calif
+        enviarCalificacion(idProducto, valor);
+    });
+
+    function resaltarEstrellas(contenedorEstrellas, cantidad) {
+        contenedorEstrellas.find('.star').each(function(indice) {
+            if (indice < cantidad) {
+                $(this).addClass('filled');
+            } else {
+                $(this).removeClass('filled');
+            }
+        });
+    }
+
+    function actualizarVisualizacionEstrellas(contenedorEstrellas, calificacion) {
+        const estrellasCompletas = Math.floor(calificacion);
+        const tieneMediaEstrella = (calificacion % 1) >= 0.5;
+        
+        contenedorEstrellas.find('.star').each(function(indice) {
+            if (indice < estrellasCompletas) {
+                $(this).addClass('filled');
+            } else if (indice === estrellasCompletas && tieneMediaEstrella) {
+                $(this).addClass('filled').css('opacity', '0.5');
+            } else {
+                $(this).removeClass('filled');
+            }
+        });
+    }
+
+    function enviarCalificacion(idProducto, calificacion) {
+        // por ahora visual no guarda bd
+        console.log(`Producto ${idProducto} calificado con ${calificacion} estrellas`);
+        
+        // actualizamos el promedio
+        const tarjeta = $(`.card-product[data-producto-id="${idProducto}"]`);
+        const elementoPromedio = tarjeta.find('.average-rating');
+        const elementoContador = tarjeta.find('.rating-count');
+        
+        // simulamos la actualizacion
+        const promedioActual = parseFloat(elementoPromedio.text());
+        const contadorActual = parseInt(elementoContador.text().match(/\d+/)[0]);
+        
+        const nuevoPromedio = ((promedioActual * contadorActual) + calificacion) / (contadorActual + 1);
+        elementoPromedio.text(nuevoPromedio.toFixed(1));
+        elementoContador.text(`(${contadorActual + 1})`);
+    }
+});
+
+function cerrarModalCalificacion() {
+    $('#ratingModal').removeClass('show');
+    $('#ratingOverlay').removeClass('show');
+}
+
+// cerrar modal al dar click
+$('#ratingOverlay').click(function() {
+    cerrarModalCalificacion();
+});
+</script>
+
                     
                         <!--       <div class="card-product">
                        
@@ -547,7 +682,7 @@ try {
                 <img src="img/g3.jpg" alt="gallery Img5" class="gallery-img-5">
             </section>
             <!--Comprar por equipo-->
-            <!--Colecciones-->
+            
             <section class="container buy-team">
                 <h1 class="heading-1">COMPRAR POR EQUIPO</h1>
                 <div class="container-team">
@@ -626,5 +761,10 @@ try {
 				</div>
             </div>
         </footer>
+        <!-- Botón de chat -->
+    <div class="chat-widget">
+        <span style="font-size: 20px;">💬</span>
+        <span>Chatea con Nosotros</span>
+    </div>
     </body>
 </html>

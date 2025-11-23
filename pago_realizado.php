@@ -74,6 +74,7 @@ if (empty($id_venta)) {
                         <li><a href="#">Coleccionables</a></li>
                         <li><a href="#">Ofertas</a></li>
                         <li><a href="#">Contacto</a></li>
+                        <li><a href="navidad.php">Navidad</a></li>
                         <li><a href="perfil.php">Mi Cuenta</a></li>
                     </ul>
                     <form class="search-form">
@@ -106,6 +107,11 @@ if (empty($id_venta)) {
 
            
         </div>
+    </div>
+    <!-- Botón de chat -->
+    <div class="chat-widget">
+        <span style="font-size: 20px;">💬</span>
+        <span>Chatea con Nosotros</span>
     </div>
 </body>
 </html>

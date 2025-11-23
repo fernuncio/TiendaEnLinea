@@ -74,6 +74,7 @@ if (!empty($_SESSION['carrito']) && is_array($_SESSION['carrito'])) {
                     <li><a href="#">Coleccionables</a></li>
                     <li><a href="#">Ofertas</a></li>
                     <li><a href="#">Contacto</a></li>
+                    <li><a href="navidad.php">Navidad</a></li>
                     <li><a href="perfil.php">Mi Cuenta</a></li>
                 </ul>
                 <form class="search-form">

@@ -78,6 +78,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <li><a href="#">Coleccionables</a></li>
                     <li><a href="#">Ofertas</a></li>
                     <li><a href="#">Contacto</a></li>
+                    <li><a href="navidad.php">Navidad</a></li>
                     <li><a href="perfil.php">Mi Cuenta</a></li>
                 </ul>
                 <form class="search-form">
@@ -238,5 +239,10 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
         </div>
     </footer>
+    <!-- Botón de chat -->
+    <div class="chat-widget">
+        <span style="font-size: 20px;">💬</span>
+        <span>Chatea con Nosotros</span>
+    </div>
 </body>
 </html>

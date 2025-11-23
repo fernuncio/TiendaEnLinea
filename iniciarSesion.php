@@ -62,5 +62,10 @@
             </form>
          </div>
     </section>
+    <!-- Botón de chat -->
+    <div class="chat-widget">
+        <span style="font-size: 20px;">💬</span>
+        <span>Chatea con Nosotros</span>
+    </div>
 </body>
 </html>
